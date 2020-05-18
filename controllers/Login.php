@@ -15,7 +15,7 @@ class Login extends CI_Controller {
     	if($success->email_id===$username && $success->password===$password){
     		$this->session->set_userdata('user_id',$success->id);
 
-    		return redirect('blog_manager/new_post');
+    		return redirect('blog_manager');
     	}else{
     		$this->session->set_flashdata('report',"Invalid username or password");
     		return redirect('login');

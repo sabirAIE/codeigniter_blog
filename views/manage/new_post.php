@@ -16,47 +16,47 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-7">
-			<?=form_open_multipart('blog_manager/post_article')?>	
-			  <div class="form-group">
-			    <input type="text" name="blog_date" class="form-control-sm form-control" value="<?=date('d-m-Y')?>" placeholder="<?=date('d-m-Y')?>" readonly>
-			    <input type="hidden" name="blog_time" value="<?=time()?>">
-			  </div>
-			  <div class="form-group">
-			    <input type="text" name="blog_title" class="form-control-sm form-control" placeholder="Title" required>
-			  </div>
-			  <div class="form-group">
-			    <select name="blog_category" class="form-control-sm form-control">
-			    	<option selected disabled>Select Category</option>
-			    	<option value="Arduino">Arduino</option>
-			    	<option value="Raspberry Pi">Raspberry Pi</option>
-			    	<option value="Artificial Intelligence">Artificial Intelligence</option>
-			    	<option value="Internet Of Things">Internet Of Things</option>
-			    	<option value="Ethics">Ethics</option>
-			    	<option value="JavaScript">JavaScript</option>
-			    </select>
-			  </div>
-			  <div class="form-group">
-			    <select name="blog_trend" class="form-control-sm form-control">
-			    	<option selected disabled>Select Trend</option>
-			    	<option value="Hot">Hot</option>
-			    	<option value="Popular">Popular</option>
-			    	<option value="DIY">DIY</option>
-			    </select>
-			  </div>
-			  
-			  <div class="form-group">
-			  	<label for="">Blog Thumbnail Image</label><br>
-			    <input class="btn btn-primary btn-sm" type="file" name="blog_image" required>
-			  </div>
-			  <div class="form-group">
-			  	<label for="">Content</label>
-			    <textarea name="blog_content" class="form-control" rows="5" required></textarea>
-			  </div>
-			  <input type="hidden" name="blog_author" value="<?=$user_data->first_name?>">
-			  <input type="hidden" name="author_id" value="<?=$user_data->id?>">
+				<?=form_open_multipart('blog_manager/post_article')?>	
+					<div class="form-group">
+						<input type="text" name="blog_date" class="form-control-sm form-control" value="<?=date('d-m-Y')?>" placeholder="<?=date('d-m-Y')?>" readonly>
+						<input type="hidden" name="blog_time" value="<?=time()?>">
+					</div>
+					<div class="form-group">
+						<input type="text" name="blog_title" class="form-control-sm form-control" placeholder="Title" required>
+					</div>
+					<div class="form-group">
+						<select name="blog_category" class="form-control-sm form-control">
+							<option selected disabled>Select Category</option>
+							<option value="Arduino">Arduino</option>
+							<option value="Raspberry Pi">Raspberry Pi</option>
+							<option value="Artificial Intelligence">Artificial Intelligence</option>
+							<option value="Internet Of Things">Internet Of Things</option>
+							<option value="Ethics">Ethics</option>
+							<option value="JavaScript">JavaScript</option>
+						</select>
+					</div>
+					<div class="form-group">
+						<select name="blog_trend" class="form-control-sm form-control">
+							<option selected disabled>Select Trend</option>
+							<option value="Hot">Hot</option>
+							<option value="Popular">Popular</option>
+							<option value="DIY">DIY</option>
+						</select>
+					</div>
+					
+					<div class="form-group">
+						<label for="">Blog Thumbnail Image</label><br>
+						<input class="btn btn-primary btn-sm" type="file" name="blog_image" required>
+					</div>
+					<div class="form-group">
+						<label for="">Content</label>
+						<textarea name="blog_content" class="form-control" rows="5" required></textarea>
+					</div>
+					<input type="hidden" name="blog_author" value="<?=$user_data->first_name?>">
+					<input type="hidden" name="author_id" value="<?=$user_data->id?>">
 
-			  <button type="submit" class="btn btn-primary">Submit</button>
-			<?=form_close()?>			  	
+					<button type="submit" class="btn btn-primary">Submit</button>
+				<?=form_close()?>			  	
 			</div>
 
 			<div class="col-md-4">

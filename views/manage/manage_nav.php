@@ -9,7 +9,7 @@
         <a class="nav-link" href="<?=base_url()?>">Ai Next Engineering<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="<?=base_url('blog_manager/new_post')?>">New Post</a>
+        <a class="nav-link" href="<?=base_url('blog_manager')?>">New Post</a>
       </li>
   	  <li class="nav-item">
         <a class="nav-link" href="<?=base_url('blog_manager/all_posts')?>">All Posts</a>

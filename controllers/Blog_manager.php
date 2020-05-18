@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Blog_manager extends CI_Controller {
 
 	//new post
-	public function new_post(){
+	public function index(){
 		
 		$user_id=$this->session->userdata['user_id'];
 		$user_data=$this->user_io->get_member_by($user_id);
@@ -27,7 +27,7 @@ class Blog_manager extends CI_Controller {
 			
 			$new_name                   	= time()."-".date('d-m-Y');
 	        $config['file_name']        	= $new_name;
-	        $config['upload_path']          = './uploads/faces';
+	        $config['upload_path']          = '.../assets/faces';
 	        $config['allowed_types']        = 'jpg|jpeg|mp4|png';
 	        $config['max_size']             = 60000;
 
@@ -84,46 +84,59 @@ class Blog_manager extends CI_Controller {
 
 	//post a new article
 	public function post_article(){
-		$post_data=$this->input->post();
-		$new_name                   	= time()."-".date('d-m-Y');
-        $config['file_name']        	= $new_name;
-        $config['upload_path']          = './uploads';
-        $config['allowed_types']        = 'jpg|jpeg|mp4|png';
-        $config['max_size']             = 60000;
 
-        $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload('blog_image')){
-	            $error = array('error' => $this->upload->display_errors());
-				$this->session->set_flashdata('class',"danger");
-				$this->session->set_flashdata('feedback',$error);
-				$this->new_post();
-	        }
-	        else{
-	        	$data =$this->upload->data();
-	        	switch ($data['file_ext']) {
-	        		case '.jpg':
-	        			$name_n_ext=$new_name.$data['file_ext'];
-	        			break;
-        			case '.jpeg':
-        				$name_n_ext=$new_name.$data['file_ext'];
-        				break;
-        			case '.mp4':
-        				$name_n_ext=$new_name.$data['file_ext'];
-        				break;
-        			case '.png':
-        				$name_n_ext=$new_name.$data['file_ext'];
-        				break;	        		
-	        		default:
-	        			$name_n_ext=$new_name.".jpg";
-	        			break;
-	        	}
-	        	array_push($post_data, $post_data['blog_image']=$name_n_ext);
-	        	unset($post_data['0']);
-				$this->blogs_io->post_article_with_image($post_data);
-				$this->session->set_flashdata('class',"success");
-				$this->session->set_flashdata('feedback',"New Article posted");
-				$this->new_post();
-			}
+		if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+			$post_data=$this->input->post();
+			$new_name                   	= time()."-".date('d-m-Y');
+			$config['file_name']        	= $new_name;
+			$config['upload_path']          = '.../assets';
+			$config['allowed_types']        = 'jpg|jpeg|mp4|png';
+			$config['max_size']             = 60000;
+
+			$this->load->library('upload', $config);
+			if ( ! $this->upload->do_upload('blog_image')){
+					$error = array('error' => $this->upload->display_errors());
+					$this->session->set_flashdata('class',"danger");
+					$this->session->set_flashdata('feedback',$error);
+					$this->post_article();
+				}
+				else{
+					$data =$this->upload->data();
+					switch ($data['file_ext']) {
+						case '.jpg':
+							$name_n_ext=$new_name.$data['file_ext'];
+							break;
+						case '.jpeg':
+							$name_n_ext=$new_name.$data['file_ext'];
+							break;
+						case '.mp4':
+							$name_n_ext=$new_name.$data['file_ext'];
+							break;
+						case '.png':
+							$name_n_ext=$new_name.$data['file_ext'];
+							break;	        		
+						default:
+							$name_n_ext=$new_name.".jpg";
+							break;
+					}
+					array_push($post_data, $post_data['blog_image']=$name_n_ext);
+					unset($post_data['0']);
+					if($this->blogs_io->post_article_with_image($post_data)){
+						$this->session->set_flashdata('class',"success");
+						$this->session->set_flashdata('feedback',"New Article posted");
+						$this->post_article();
+					}else{
+						$this->session->set_flashdata('class',"danger");
+						$this->session->set_flashdata('feedback',"Internal error occurred");
+						$this->post_article();
+					}
+				}
+
+			}else{
+				$user_id=$this->session->userdata['user_id'];
+				$user_data=$this->user_io->get_member_by($user_id);
+				$this->load->view('manage/new_post',compact('user_data'));
+		}
 	}
 
 	/////////////////////all Notes/////////////////
