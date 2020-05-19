@@ -7,7 +7,10 @@ Please integrate with Codeigniter 3.0, Otherwise it may create problems.
 
 ##### Step 1:
 Download and merge with your project
-
+```
+-Copy and paste controller, Model and View files to your current respective project folders
+-Make sure that the \*assets*\ folder is there in your root directory
+```
 ##### Step 2:
 Only thing you need to do is go to your PhpMyAdmin and Import the SQL file.
 
