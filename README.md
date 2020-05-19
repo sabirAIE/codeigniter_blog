@@ -8,8 +8,8 @@ Please integrate with Codeigniter 3.0, Otherwise it may create problems.
 ##### Step 1:
 Download and merge with your project
 ```
-_ Copy and paste controller, Model and View files to your current respective project folders
-_ Make sure that the "assets" folder is there in your root directory
+- [x] Copy and paste controller, Model and View files to your current respective project folders
+- [x] Make sure that the "assets" folder is there in your root directory
 
 ```
 ##### Step 2:
