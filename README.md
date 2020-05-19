@@ -15,5 +15,5 @@ Download and merge with your project
 ##### Step 2:
 Only thing you need to do is go to your PhpMyAdmin and Import the SQL file.
 
-My website [Ai Next](http://ainextengineering.com/about_us)
+My website [Ai Next](http://ainextengineering.com/about_us) | 
 Linkedin [Sabir Ansari](https://www.linkedin.com/in/sabir-ansari-7618a7110)
